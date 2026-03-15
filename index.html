@@ -43,7 +43,7 @@ function generatePrompts(name, location, service) {
 
 async function queryAI(prompt) {
   try {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
+    const r = await fetch("https://aldren-api.team-be7.workers.dev", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
