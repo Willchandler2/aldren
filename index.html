@@ -208,7 +208,28 @@ function LostLeads({ lost, score, top }) {
 function ContactModal({ onClose, business, results }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
-  const submit = () => { if (form.name && form.email) { console.log("Lead:", { ...form, business, score: results?.score }); setSent(true); } };
+  const submit = async () => {
+    if (!form.name || !form.email) return;
+    try {
+      await fetch("https://formspree.io/f/mwvrnzww", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || "Not provided",
+          business_name: business?.name,
+          business_location: business?.location,
+          business_service: business?.service,
+          audit_score: results?.score,
+          ai_mentions: `${results?.mentioned}/${results?.total}`,
+          est_lost_leads: results?.lostLeads,
+          grade: `${results?.grade?.letter} - ${results?.grade?.label}`,
+        }),
+      });
+    } catch (e) { console.error(e); }
+    setSent(true);
+  };
   const inputStyle = { width: "100%", padding: "11px 14px", background: "rgba(0,0,0,0.3)", border: `1px solid ${BORDER}`, borderRadius: 8, color: TEXT_PRIMARY, fontSize: 14, fontFamily: "'Instrument Sans', sans-serif" };
   const labelStyle = { display: "block", fontFamily: "mono", fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 };
   return (
