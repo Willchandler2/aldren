@@ -434,7 +434,7 @@ function App() {
             </div>
 
             {/* Competitors + Queries */}
-            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20, marginBottom: 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 20, marginBottom: 20 }}>
               <div style={panel}>
                 <div style={{ marginBottom: 16 }}><h3 style={{ ...panelTitle, fontSize: 14, marginBottom: 4 }}>Who AI recommends instead</h3><span style={panelCount}>by frequency</span></div>
                 <CompetitorChart ranked={results.ranked} total={results.total} bizName={biz.name} userMentions={results.mentioned} />
