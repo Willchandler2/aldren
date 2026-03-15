@@ -48,14 +48,33 @@ async function queryAI(prompt) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 1024,
+        max_tokens: 4096,
         tools: [{ type: "web_search_20250305", name: "web_search" }],
         messages: [{ role: "user", content: prompt }],
       }),
     });
     const data = await r.json();
-    return data.content?.map((b) => (b.type === "text" ? b.text : "")).filter(Boolean).join("\n") || "";
-  } catch (e) { console.error(e); return ""; }
+    if (data.error) { console.error("API error:", data.error); return ""; }
+    // Handle multi-turn: if stop_reason is tool_use, we got search results but no final text yet
+    // Collect any text blocks from the response
+    const textParts = (data.content || []).filter(b => b.type === "text").map(b => b.text);
+    if (textParts.length > 0) return textParts.join("\n");
+    // If no text yet (model used web_search and stopped), we need to continue the conversation
+    // by sending back the tool results - but the API handles this automatically with web_search tool
+    // So if we got here with no text, try without web search as fallback
+    console.log("No text in response, trying without web search for:", prompt);
+    const r2 = await fetch("https://aldren-api.team-be7.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1024,
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+    const data2 = await r2.json();
+    return (data2.content || []).filter(b => b.type === "text").map(b => b.text).join("\n") || "";
+  } catch (e) { console.error("Fetch error:", e); return ""; }
 }
 
 function checkMention(text, name) {
