@@ -291,8 +291,8 @@ function ContactModal({ onClose, business, results }) {
       <div style={{ position: "relative", width: "100%", maxWidth: 480, background: "#18181a", border: `1px solid ${BORDER}`, borderRadius: 14, padding: "32px 28px" }} onClick={(e) => e.stopPropagation()}>
         <button onClick={onClose} style={{ position: "absolute", top: 14, right: 14, background: "none", border: "none", color: TEXT_TERTIARY, fontSize: 18, cursor: "pointer" }}>✕</button>
         {!sent ? (<>
-          <h3 style={{ fontSize: 18, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>Get your custom strategy</h3>
-          <p style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.6, marginBottom: 22 }}>We'll review your audit and build a plan for {business?.name || "your business"}.</p>
+          <h3 style={{ fontSize: 18, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>Let's fix your AI visibility</h3>
+          <p style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.6, marginBottom: 22 }}>Tell us how to reach you. We'll walk through your audit results and show you exactly what Aldren will do for {business?.name || "your business"}.</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <div><label style={labelStyle}>Name *</label><input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} style={inputStyle} placeholder="John Smith" /></div>
             <div><label style={labelStyle}>Email *</label><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} style={inputStyle} placeholder="john@company.com" type="email" /></div>
