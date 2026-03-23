@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://aldren.xyz/</loc>
+    <lastmod>2026-03-23</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aldren.xyz/blog/how-to-get-recommended-by-ai/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aldren.xyz/blog/what-is-ai-visibility/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aldren.xyz/blog/why-your-business-isnt-showing-up-in-chatgpt/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
