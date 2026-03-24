@@ -437,6 +437,23 @@ function App() {
     if (!biz.name || !biz.location || !biz.service) return;
     setStage("running"); setProgress(0);
 
+    // Track audit submission
+    try {
+      fetch("https://formspree.io/f/mwvrnzww", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _subject: "Audit ran: " + biz.name,
+          type: "AUDIT_TRACKING",
+          business_name: biz.name,
+          location: biz.location,
+          service: biz.service,
+          timestamp: new Date().toISOString(),
+          referrer: document.referrer || "direct"
+        }),
+      });
+    } catch (e) {}
+
     setStatusText("Generating queries..."); setProgress(5);
     const prompts = generatePrompts(biz.name, biz.location, biz.service);
     await new Promise((r) => setTimeout(r, 400));
@@ -491,7 +508,10 @@ function App() {
       <nav style={{ borderBottom: `1px solid ${BORDER}`, background: "rgba(17,17,16,0.9)", backdropFilter: "blur(16px)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ maxWidth: 840, margin: "0 auto", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <span style={{ fontFamily: serif, fontSize: 20, fontWeight: 300, color: TEXT_PRIMARY, letterSpacing: "0.18em" }}>ALDREN</span>
-          <span style={{ fontFamily: serif, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.25em", textTransform: "uppercase" }}>{TAGLINE}</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <a href="/blog/how-to-get-recommended-by-ai/" style={{ fontFamily: mono, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.08em", textDecoration: "none" }}>BLOG</a>
+            <span style={{ fontFamily: serif, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.25em", textTransform: "uppercase" }}>{TAGLINE}</span>
+          </div>
         </div>
       </nav>
 
@@ -664,8 +684,17 @@ function App() {
         {showContact && <ContactModal onClose={() => setShowContact(false)} business={biz} results={results} />}
       </main>
 
-      <footer style={{ maxWidth: 840, margin: "0 auto", padding: "20px 24px 28px", borderTop: `1px solid ${BORDER}`, fontFamily: mono, fontSize: 11, color: TEXT_TERTIARY, display: "flex", gap: 8 }}>
-        <span>© 2026 Aldren</span><span style={{ color: "rgba(232,224,208,0.1)" }}>·</span><span>aldren.xyz</span>
+      <footer style={{ maxWidth: 840, margin: "0 auto", padding: "20px 24px 28px", borderTop: `1px solid ${BORDER}`, fontFamily: mono, fontSize: 11, color: TEXT_TERTIARY }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
+          <div style={{ display: "flex", gap: 8 }}>
+            <span>© 2026 Aldren</span><span style={{ color: "rgba(232,224,208,0.1)" }}>·</span><span>aldren.xyz</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+            <a href="/blog/how-to-get-recommended-by-ai/" style={{ color: TEXT_TERTIARY, textDecoration: "none", fontSize: 10 }}>How to get recommended by AI</a>
+            <a href="/blog/what-is-ai-visibility/" style={{ color: TEXT_TERTIARY, textDecoration: "none", fontSize: 10 }}>What is AI visibility?</a>
+            <a href="/blog/why-your-business-isnt-showing-up-in-chatgpt/" style={{ color: TEXT_TERTIARY, textDecoration: "none", fontSize: 10 }}>Why you're not in ChatGPT</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
