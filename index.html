@@ -22,9 +22,14 @@
   "serviceType": ["AI Visibility Optimization", "Generative Engine Optimization", "AI Search Marketing", "Local Business AI Marketing"],
   "knowsAbout": ["AI search optimization", "generative engine optimization", "ChatGPT marketing", "Claude AI", "Gemini AI", "Perplexity AI", "local business marketing", "schema markup", "AI visibility audits"],
   "slogan": "The Future of Being Found",
+  "founder": {
+    "@type": "Person",
+    "givenName": "Will",
+    "jobTitle": "Founder"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "team@aldrenmarketing.com",
+    "email": "will@aldrenmarketing.com",
     "contactType": "sales"
   }
 }
@@ -401,7 +406,7 @@ function ContactModal({ onClose, business, results }) {
         <button onClick={onClose} style={{ position: "absolute", top: 14, right: 14, background: "none", border: "none", color: TEXT_TERTIARY, fontSize: 18, cursor: "pointer" }}>✕</button>
         {!sent ? (<>
           <h3 style={{ fontSize: 18, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>Let's fix your AI visibility</h3>
-          <p style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.6, marginBottom: 22 }}>Tell us how to reach you. We'll walk through your audit results and show you exactly what Aldren will do for {business?.name || "your business"}.</p>
+          <p style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.6, marginBottom: 22 }}>Drop your info and I'll walk through your audit results and show you exactly what I'd do for {business?.name || "your business"}. — Will</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <div><label style={labelStyle}>Name *</label><input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} style={inputStyle} placeholder="John Smith" /></div>
             <div><label style={labelStyle}>Email *</label><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} style={inputStyle} placeholder="john@company.com" type="email" /></div>
@@ -412,8 +417,8 @@ function ContactModal({ onClose, business, results }) {
         </>) : (
           <div style={{ textAlign: "center", padding: "16px 0" }}>
             <div style={{ fontSize: 32, marginBottom: 16 }}>✓</div>
-            <h3 style={{ fontSize: 18, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>We'll be in touch</h3>
-            <p style={{ fontSize: 13, color: TEXT_SECONDARY, marginBottom: 16 }}>Expect a response at <strong style={{ color: TEXT_PRIMARY }}>{form.email}</strong> within 24 hours.</p>
+            <h3 style={{ fontSize: 18, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>Got it. I'll be in touch.</h3>
+            <p style={{ fontSize: 13, color: TEXT_SECONDARY, marginBottom: 16 }}>Expect a reply at <strong style={{ color: TEXT_PRIMARY }}>{form.email}</strong> within 24 hours. — Will</p>
             <button onClick={onClose} style={{ padding: "8px 20px", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 6, color: TEXT_SECONDARY, fontSize: 13, cursor: "pointer", fontFamily: "'Instrument Sans', sans-serif" }}>Close</button>
           </div>
         )}
@@ -509,8 +514,9 @@ function App() {
         <div style={{ maxWidth: 840, margin: "0 auto", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <span style={{ fontFamily: serif, fontSize: 20, fontWeight: 300, color: TEXT_PRIMARY, letterSpacing: "0.18em" }}>ALDREN</span>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <a href="#about" style={{ fontFamily: mono, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.08em", textDecoration: "none" }}>ABOUT</a>
             <a href="/blog/how-to-get-recommended-by-ai/" style={{ fontFamily: mono, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.08em", textDecoration: "none" }}>BLOG</a>
-            <span style={{ fontFamily: serif, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.25em", textTransform: "uppercase" }}>{TAGLINE}</span>
+            <a href="#contact" style={{ fontFamily: mono, fontSize: 10, fontWeight: 500, color: TEXT_TERTIARY, letterSpacing: "0.08em", textDecoration: "none" }}>CONTACT</a>
           </div>
         </div>
       </nav>
@@ -528,25 +534,25 @@ function App() {
             </h1>
 
             <p style={{ fontSize: 16, lineHeight: 1.7, color: TEXT_SECONDARY, marginBottom: 44, maxWidth: 500 }}>
-              We query AI the way your customers do and show you exactly who it recommends. Most businesses score under 25.
+              I query AI the way your customers do and show you exactly who it recommends. Most businesses score under 25.
             </p>
 
             {/* How it works */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 44 }}>
               <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 18px" }}>
                 <div style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", marginBottom: 10 }}>01</div>
-                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>We audit your visibility</h3>
+                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>I audit your visibility</h3>
                 <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, lineHeight: 1.55 }}>See exactly where you stand when customers ask AI for your services.</p>
               </div>
               <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 18px" }}>
                 <div style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", marginBottom: 10 }}>02</div>
-                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>We build the strategy</h3>
+                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>I build the strategy</h3>
                 <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, lineHeight: 1.55 }}>Schema markup, content optimization, review strategy, authority building.</p>
               </div>
               <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 18px" }}>
                 <div style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", marginBottom: 10 }}>03</div>
-                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>We do the work</h3>
-                <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, lineHeight: 1.55 }}>We implement everything, every month. You focus on running your business.</p>
+                <h3 style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>I do the work</h3>
+                <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, lineHeight: 1.55 }}>I implement everything, every month. You focus on running your business.</p>
               </div>
             </div>
 
@@ -566,6 +572,63 @@ function App() {
             </div>
 
             <p style={{ fontSize: 13, color: TEXT_TERTIARY }}>Queries match patterns used with ChatGPT, Claude, Gemini, and Perplexity.</p>
+
+            {/* ━━━ About ━━━ */}
+            <div id="about" style={{ marginTop: 72, display: "flex", gap: 28, alignItems: "flex-start", flexWrap: "wrap" }}>
+              <div style={{ width: 100, height: 100, borderRadius: "50%", background: "rgba(232,224,208,0.06)", border: `1px solid ${BORDER}`, flexShrink: 0, overflow: "hidden" }}>
+                <img src="will.jpg" alt="Will" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+              <div style={{ flex: 1, minWidth: 260 }}>
+                <p style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>Who's behind Aldren</p>
+                <h2 style={{ fontSize: 22, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 10 }}>Hey, I'm Will.</h2>
+                <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7, marginBottom: 10 }}>
+                  I help local businesses in the Piedmont Triad get recommended by AI search tools like ChatGPT, Claude, and Gemini. I got into this because I kept seeing great businesses get passed over by AI while weaker competitors showed up — just because they had the right data in the right places.
+                </p>
+                <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7 }}>
+                  My background is in engineering document management and data systems, which turns out to be exactly what structured data and AI optimization need. I work with businesses one-on-one to fix the problem and keep them visible.
+                </p>
+                <p style={{ fontFamily: mono, fontSize: 11, color: TEXT_TERTIARY, marginTop: 12 }}>Based in the Greensboro, NC area</p>
+              </div>
+            </div>
+
+            {/* ━━━ Testimonials (hidden until real quotes added) ━━━ */}
+            {/*
+            PLACEHOLDER: Uncomment this section when you have real testimonials.
+            Replace the quote, name, business, and town for each.
+
+            <div style={{ marginTop: 64 }}>
+              <p style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 20, textAlign: "center" }}>What business owners are saying</p>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "24px 22px" }}>
+                  <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7, fontStyle: "italic", marginBottom: 14 }}>"[PLACEHOLDER: Real quote from client]"</p>
+                  <p style={{ fontFamily: mono, fontSize: 11, color: TEXT_PRIMARY }}>— [First name], <span style={{ color: TEXT_TERTIARY }}>[Business type] · [Town, NC]</span></p>
+                </div>
+                <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "24px 22px" }}>
+                  <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7, fontStyle: "italic", marginBottom: 14 }}>"[PLACEHOLDER: Real quote from client]"</p>
+                  <p style={{ fontFamily: mono, fontSize: 11, color: TEXT_PRIMARY }}>— [First name], <span style={{ color: TEXT_TERTIARY }}>[Business type] · [Town, NC]</span></p>
+                </div>
+                <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "24px 22px" }}>
+                  <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7, fontStyle: "italic", marginBottom: 14 }}>"[PLACEHOLDER: Real quote from client]"</p>
+                  <p style={{ fontFamily: mono, fontSize: 11, color: TEXT_PRIMARY }}>— [First name], <span style={{ color: TEXT_TERTIARY }}>[Business type] · [Town, NC]</span></p>
+                </div>
+              </div>
+            </div>
+            */}
+
+            {/* ━━━ Contact ━━━ */}
+            <div id="contact" style={{ marginTop: 64, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "32px 28px" }}>
+              <p style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: ACCENT, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>Get in touch</p>
+              <h2 style={{ fontSize: 20, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 8 }}>Want to see where your business stands?</h2>
+              <p style={{ fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.7, marginBottom: 18 }}>
+                Run the free audit above, or reach out directly. I work with businesses in Greensboro, Winston-Salem, High Point, Kernersville, and Rockingham County.
+              </p>
+              <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+                <a href="mailto:will@aldrenmarketing.com" style={{ padding: "11px 24px", background: ACCENT, color: "#111110", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: sans, cursor: "pointer", textDecoration: "none", display: "inline-block" }}>will@aldrenmarketing.com</a>
+                <span style={{ fontFamily: mono, fontSize: 11, color: TEXT_TERTIARY }}>or use the contact form after any audit</span>
+              </div>
+              <p style={{ fontFamily: mono, fontSize: 10, color: TEXT_TERTIARY, marginTop: 16 }}>Service area: Greensboro · Winston-Salem · High Point · Kernersville · Rockingham County</p>
+            </div>
+
           </div>
         )}
 
@@ -639,7 +702,7 @@ function App() {
             <div style={{ background: ACCENT_DIM, border: `1px solid rgba(201,169,110,0.2)`, borderRadius: 12, padding: "40px 32px", textAlign: "center", marginBottom: 24 }}>
               <p style={{ fontFamily: mono, fontSize: 10, fontWeight: 600, color: "#b55a4a", letterSpacing: "0.1em", marginBottom: 14 }}>~{results.lostLeads} LEADS LOST EVERY MONTH YOU WAIT</p>
               <h3 style={{ fontSize: 20, fontWeight: 700, color: TEXT_PRIMARY, marginBottom: 8 }}>Ready to become the recommendation?</h3>
-              <p style={{ fontSize: 14, color: TEXT_SECONDARY, maxWidth: 420, margin: "0 auto 22px", lineHeight: 1.6 }}>Aldren handles everything. We implement the changes, optimize your presence, and monitor your visibility every month. You focus on running your business.</p>
+              <p style={{ fontSize: 14, color: TEXT_SECONDARY, maxWidth: 420, margin: "0 auto 22px", lineHeight: 1.6 }}>I handle everything — the changes, the optimization, the monthly monitoring. You focus on running your business.</p>
               <button onClick={() => setShowContact(true)} style={{ padding: "13px 32px", background: ACCENT, color: "#111110", border: "none", borderRadius: 8, fontSize: 14, fontWeight: 600, fontFamily: sans, cursor: "pointer" }}>Get your strategy</button>
             </div>
 
@@ -671,8 +734,8 @@ function App() {
                 ))}
               </div>
               <div style={{ textAlign: "center", marginTop: 20, padding: "20px 16px", borderRadius: 8, background: ACCENT_DIM, border: `1px solid rgba(201,169,110,0.15)` }}>
-                <p style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>We don't just show you the problem. We fix it.</p>
-                <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, marginBottom: 14 }}>Aldren implements every recommendation for you. Schema markup, content optimization, review strategy, authority building. Done for you, every month.</p>
+                <p style={{ fontSize: 14, fontWeight: 600, color: TEXT_PRIMARY, marginBottom: 6 }}>I don't just show you the problem. I fix it.</p>
+                <p style={{ fontSize: 12.5, color: TEXT_SECONDARY, marginBottom: 14 }}>I implement every recommendation for you. Schema markup, content optimization, review strategy, authority building. Done for you, every month.</p>
                 <button onClick={() => setShowContact(true)} style={{ padding: "11px 28px", background: ACCENT, color: "#111110", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, fontFamily: sans, cursor: "pointer" }}>Get started</button>
               </div>
             </div>
@@ -686,8 +749,11 @@ function App() {
 
       <footer style={{ maxWidth: 840, margin: "0 auto", padding: "20px 24px 28px", borderTop: `1px solid ${BORDER}`, fontFamily: mono, fontSize: 11, color: TEXT_TERTIARY }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
-          <div style={{ display: "flex", gap: 8 }}>
-            <span>© 2026 Aldren</span><span style={{ color: "rgba(232,224,208,0.1)" }}>·</span><span>aldren.xyz</span>
+          <div>
+            <div style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+              <span>© 2026 Aldren</span><span style={{ color: "rgba(232,224,208,0.1)" }}>·</span><span>Will</span><span style={{ color: "rgba(232,224,208,0.1)" }}>·</span><a href="mailto:will@aldrenmarketing.com" style={{ color: TEXT_TERTIARY, textDecoration: "none" }}>will@aldrenmarketing.com</a>
+            </div>
+            <span style={{ fontSize: 9 }}>Greensboro · Winston-Salem · High Point · Kernersville · Rockingham County</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
             <a href="/blog/how-to-get-recommended-by-ai/" style={{ color: TEXT_TERTIARY, textDecoration: "none", fontSize: 10 }}>How to get recommended by AI</a>
